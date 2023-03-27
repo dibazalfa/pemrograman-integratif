@@ -21,20 +21,22 @@ const mahasiswaProto = grpc.loadPackageDefinition(packageDefinition);
 const server = new grpc.Server();
 
 // Dummy data 
-let mahasiswa = [
-  {
-    id: "1",
-    nama: "Rudi",
-    nrp: "5119",
-    nilai: 59
-  },
-  {
-    id: "2",
-    nama: "Budi",
-    nrp: "5118",
-    nilai: 60
-  }
-]
+let mahasiswa = {
+    mahasiswa: [
+        {
+            id: "1",
+            nama: "Rudi",
+            nrp: "5119",
+            nilai: 59
+          },
+          {
+            id: "2",
+            nama: "Budi",
+            nrp: "5118",
+            nilai: 60
+          }
+    ]
+}
 
 server.addService(mahasiswaProto.MahasiswaService.service, {
   getAll: (_, callback) => {
