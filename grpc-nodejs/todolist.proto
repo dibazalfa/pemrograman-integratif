@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+// Object 
+
+message ToDo {
+  string id = 1;
+  string matkul = 2;
+  string ket = 3;
+  string deadline = 4;
+}
+
+message ToDoList {
+  repeated ToDo todo = 1;
+}
+
+message ToDoId {
+  string id = 1;
+}
+
+message Empty {}
+
+// Service 
+service ToDoService {
+  // Create 
+  rpc AddToDo (ToDo) returns (ToDo) {}
+  // Read 
+  rpc GetAll (Empty) returns (ToDoList) {}
+  rpc GetToDo (ToDoId) returns (ToDo) {}
+  // Update
+  rpc EditToDo (ToDo) returns (ToDo) {}
+  // Delete
+  rpc DeleteToDo (ToDoId) returns (Empty) {}
+}

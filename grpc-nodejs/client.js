@@ -3,7 +3,7 @@ const grpc = require("@grpc/grpc-js");
 var protoLoader = require("@grpc/proto-loader");
 
 // Define proto path 
-const PROTO_PATH = "./mahasiswa.proto"
+const PROTO_PATH = "./todolist.proto"
 
 const options = {
   keepCase: true,
@@ -16,23 +16,12 @@ const options = {
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
 // Load service 
-const MahasiswaService = grpc.loadPackageDefinition(packageDefinition).MahasiswaService;
+const ToDoService = grpc.loadPackageDefinition(packageDefinition).ToDoService;
 
 // Define client 
-const client = new MahasiswaService(
+const client = new ToDoService(
   "127.0.0.1:50051",
   grpc.credentials.createInsecure()
 )
 
-// client.getAll({}, (error, response) => {
-//   if (error) throw error;
-//   console.log("test");
-//   console.log(response);
-// });
-
-setTimeout(() => {
-  client.getAll({}, (error, response) => {
-    if (error) throw error;
-    console.log(response);
-  });
-}, 1000);
+module.exports = client;
