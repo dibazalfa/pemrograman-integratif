@@ -23,7 +23,6 @@ if(nomor == 1) {
     rl.question('Tambahkan Keterangan: ', (ket) => {
 
       rl.question('Deadline: ', (deadline) => {
-    
           // melakukan penambahan data ke firestore
           client.addToDo({
             matkul: matkul,
@@ -50,6 +49,7 @@ if(nomor == 1) {
     } else {
       console.error(error)
     }
+    rl.close();
   })
 } else if(nomor == 3) {
   // read todo 
@@ -69,6 +69,7 @@ if(nomor == 1) {
             }
           }
         )
+        rl.close();
   });
 } else if(nomor == 4) {
   // edit todo
@@ -96,6 +97,7 @@ if(nomor == 1) {
               }
             }
           )
+          rl.close();
         });
       });
     });
@@ -117,9 +119,11 @@ if(nomor == 1) {
           }
         }
       )
+      rl.close();
   });
 } else {
   console.log("Inputan yang dimasukkan salah")
+  rl.close();
 }
 
 });
